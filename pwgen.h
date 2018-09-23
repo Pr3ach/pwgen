@@ -20,6 +20,7 @@
 void usage(const char *self);
 char *pw_gen(int pw_len, int opt);
 
+#define MIN_LEN 1
 #define MAX_LEN 255
 
 /* Options mask */

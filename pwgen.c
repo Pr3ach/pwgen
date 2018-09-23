@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	if (pw_len > MAX_LEN || pw_len < 1)
+	if (pw_len > MAX_LEN || pw_len < MIN_LEN)
 	{
 		w_byellow("[!] # 0<length<256\n");
 		exit(-1);
