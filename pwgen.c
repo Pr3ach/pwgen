@@ -8,9 +8,8 @@ int main(int argc, char *argv[])
 {
 	char o = 0;
 	int pw_len = 0;
-	int use_alpha = 0;
-	int use_num = 0;
-	int use_spec = 0;
+
+	OPTIONS = O_NONE;
 
 	if (argc < 2)
 		usage(argv[0]);
@@ -23,17 +22,23 @@ int main(int argc, char *argv[])
 				pw_len = atoi(optarg);
 				break;
 			case 'a':
-				use_alpha = 1;
+				O_OPTIONS |= O_ALPHA;
 				break;
 			case 'n':
-				use_num = 1;
+				O_OPTIONS |= O_NUM;
 				break;
 			case 's':
-				use_spec = 1;
+				O_OPTIONS |= O_SPECIAL;
 				break;
 			default:
 				break;
 		}
+	}
+
+	if (pw_len > MAX_LEN || pw_len < 1)
+	{
+		w_byellow("[!] # 0<length<256\n");
+		exit(-1);
 	}
 
 	exit(0);
@@ -48,4 +53,12 @@ void usage(const char *self)
 	w_white("  -s		Use special charset\n");
 
 	exit(0);
+}
+
+/*
+ * Generate and return a password according to options.
+ *
+ */
+char *pw_gen(int pw_len, int opt)
+{
 }
