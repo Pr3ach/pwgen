@@ -8,8 +8,7 @@ int main(int argc, char *argv[])
 {
 	char o = 0;
 	int pw_len = 0;
-
-	OPTIONS = O_NONE;
+	int OPTIONS = O_NONE;
 
 	if (argc < 2)
 		usage(argv[0]);
@@ -22,13 +21,13 @@ int main(int argc, char *argv[])
 				pw_len = atoi(optarg);
 				break;
 			case 'a':
-				O_OPTIONS |= O_ALPHA;
+				OPTIONS |= O_ALPHA;
 				break;
 			case 'n':
-				O_OPTIONS |= O_NUM;
+				OPTIONS |= O_NUM;
 				break;
 			case 's':
-				O_OPTIONS |= O_SPECIAL;
+				OPTIONS |= O_SPECIAL;
 				break;
 			default:
 				break;
@@ -40,6 +39,8 @@ int main(int argc, char *argv[])
 		w_byellow("[!] # 0<length<256\n");
 		exit(-1);
 	}
+
+	genpw(pw_len, OPTIONS);
 
 	exit(0);
 }

@@ -29,6 +29,4 @@ char *pw_gen(int pw_len, int opt);
 #define O_NUM 2
 #define O_SPECIAL 4
 
-int OPTIONS;
-
 #endif
