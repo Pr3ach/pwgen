@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		exit(-1);
 	}
 
-	genpw(pw_len, OPTIONS);
+	w_bgreen("[*] %s\n", genpw(pw_len, OPTIONS));
 
 	exit(0);
 }
@@ -57,9 +57,12 @@ void usage(const char *self)
 }
 
 /*
- * Generate and return a password according to options.
+ * Generate and return a password according to the specified options.
  *
  */
 char *pw_gen(int pw_len, int opt)
 {
+	char charset_alpha[64] = "abcdefghijklmnopqrstuvwxyz";
+	char charset_num[64] = "0123456789";
+	char charset_spec[64] = "!?%=\\-_:+~|@#/;><&$*";
 }
