@@ -18,10 +18,25 @@
 #ifndef PWGEN_H
 #define PWGEN_H
 void usage(const char *self);
-char *pw_gen(int pw_len, int opt);
+void version(void);
+void pw_gen(int pw_len);
+void shuffle_charset(char charset[]);
+void swap(char s[], int i1, int i2);
 
-#define MIN_LEN 1
+#define VERSION 1.00
+#define AUTHOR "Preacher"
+
+#if defined(__linux__) || (defined(__APPLE__) && defined(__MACH__)) || defined(__unix__)
+#define PLATFORM "unix"
+#else
+#define PLATFORM "win"
+#endif
+
+#define MIN_LEN 4
 #define MAX_LEN 255
+
+int OPTIONS;
+char PASSWD[MAX_LEN+1];
 
 /* Options mask */
 #define O_NONE 0
